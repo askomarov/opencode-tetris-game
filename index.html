@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Tetris</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="stage">
+      <div class="board-wrap">
+        <canvas id="board" width="300" height="600" aria-label="Tetris board"></canvas>
+
+        <div class="overlay visible" id="overlay" data-mode="start">
+          <div class="overlay-inner">
+            <p class="eyebrow" id="ovEyebrow">Classic</p>
+            <h1 id="ovTitle">Tetris</h1>
+            <p class="overlay-text" id="ovText">Clear lines before the stack reaches the top.</p>
+            <button class="btn" id="startBtn" type="button">Start game</button>
+            <p class="overlay-hint" id="ovHint">
+              <span class="hint-desktop">← → move · ↑ rotate · ↓ soft drop · Space hard drop</span>
+              <span class="hint-touch">Tap board to rotate · drag to move · drag down to soft drop</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel" aria-label="Game information">
+        <div class="card score-card">
+          <span class="label">Score</span>
+          <span class="value" id="score">0</span>
+        </div>
+
+        <div class="card mini">
+          <span class="label">Lines</span>
+          <span class="value" id="lines">0</span>
+        </div>
+
+        <div class="card mini">
+          <span class="label">Level</span>
+          <span class="value" id="level">1</span>
+        </div>
+
+        <div class="card next-card">
+          <span class="label">Next</span>
+          <canvas id="next" width="120" height="120" aria-label="Next piece"></canvas>
+        </div>
+
+        <div class="card keys">
+          <span class="label">Controls</span>
+          <ul>
+            <li><kbd>←</kbd><kbd>→</kbd><span>Move</span></li>
+            <li><kbd>↑</kbd><span>Rotate</span></li>
+            <li><kbd>↓</kbd><span>Soft drop</span></li>
+            <li><kbd>Space</kbd><span>Hard drop</span></li>
+            <li><kbd>P</kbd><span>Pause</span></li>
+            <li><kbd>R</kbd><span>Restart</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="touch" aria-label="Touch controls">
+      <div class="touch-group touch-move">
+        <button class="tbtn" type="button" data-action="left" aria-label="Move left">◀</button>
+        <button class="tbtn" type="button" data-action="down" aria-label="Soft drop">▼</button>
+        <button class="tbtn" type="button" data-action="right" aria-label="Move right">▶</button>
+      </div>
+      <div class="touch-group touch-actions">
+        <button class="tbtn" type="button" data-action="rotate" aria-label="Rotate">⟳</button>
+        <button class="tbtn" type="button" data-action="drop" aria-label="Hard drop">⤓</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="src/game.js"></script>
+</body>
+</html>
